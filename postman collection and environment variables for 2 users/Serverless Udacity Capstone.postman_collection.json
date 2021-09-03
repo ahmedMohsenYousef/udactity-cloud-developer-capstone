@@ -1,0 +1,931 @@
+{
+	"info": {
+		"_postman_id": "19fd33d5-8131-4f0c-92a2-9b6053a85cac",
+		"name": "Serverless Udacity Capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Adverts.",
+			"item": [
+				{
+					"name": "Get all adverts (can be used in the  home page)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/adverts",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"adverts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all adverts (can be used in the  home page)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/adverts",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"adverts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1354"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Sep 2021 20:34:30 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "2a8beda6-5da1-4042-986e-7fd7d90d9758"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "FGoBdFzEIAMFeIQ="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-613286d5-160fea9475e13ae2795c4527"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 338cc9ab91d22cdfee3da5b2b53c3110.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "sIAjr1JKjd0OwcEwsFdoZxmCtvzc-_z08iNz8w-ty2EKL_VfxDG0jQ=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"model\": \"3\",\n            \"attachmentUrl\": \"https://serverless-cars-adverts-dev.s3.amazonaws.com/7e7db3b8-e09b-4482-b412-a608b07457b5\",\n            \"createdAt\": \"2021-09-03T20:19:46.399Z\",\n            \"make\": \"Mazda\",\n            \"contactInfo\": \"+201144862101\",\n            \"userId\": \"google-oauth2|108745815029002158923\",\n            \"year\": 2017,\n            \"Advert\": \"CarAdvert\",\n            \"description\": \"mint condition...\",\n            \"price\": 120000,\n            \"advertisementId\": \"66bf0940-af8c-4f8f-b2bf-bef261ecdb3a\",\n            \"mileage\": 20000\n        },\n        {\n            \"model\": \"impreza\",\n            \"attachmentUrl\": \"https://serverless-cars-adverts-dev.s3.amazonaws.com/cec947d3-7a10-4b5b-9302-83eb87872776\",\n            \"createdAt\": \"2021-09-03T20:19:10.084Z\",\n            \"make\": \"subaru\",\n            \"contactInfo\": \"+201144862101\",\n            \"userId\": \"google-oauth2|108745815029002158923\",\n            \"year\": 2007,\n            \"Advert\": \"CarAdvert\",\n            \"description\": \"fair condition only minor scratches and dents...\",\n            \"price\": 50000,\n            \"advertisementId\": \"b2d41227-17b2-41d7-8a63-f42f9e9c534e\",\n            \"mileage\": 90000\n        },\n        {\n            \"model\": \"Cherokee\",\n            \"attachmentUrl\": \"https://serverless-cars-adverts-dev.s3.amazonaws.com/bf28d551-5ec3-4aca-a11b-a599e5ceb2f3\",\n            \"createdAt\": \"2021-09-03T20:21:36.149Z\",\n            \"make\": \"Jeep\",\n            \"contactInfo\": \"please call on 123343123, except on Fridays\",\n            \"userId\": \"auth0|61282f35b5b076006af41356\",\n            \"year\": 2018,\n            \"Advert\": \"CarAdvert\",\n            \"description\": \"Excellent condition. All original equipment used for weekly travels.\",\n            \"price\": 320000,\n            \"advertisementId\": \"b922953a-9853-49a6-be64-b9d01b99631e\",\n            \"mileage\": 35000\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user created adverts (can be used in my created adverts page)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/useradverts",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"useradverts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user 1 can see his created ads only",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/useradverts",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"useradverts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "501"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Sep 2021 20:34:16 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "01127c6d-fc49-4500-b460-3a0ac6045f51"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "FGn_OHETIAMF4hg="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-613286c7-2578a3784ac5e9aa4135475f"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 338cc9ab91d22cdfee3da5b2b53c3110.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "VgIhC1vz1wz8irViGexFGIC7-KVrAkVThTleFvvfB6zx6jpa_5Jq9Q=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"model\": \"Cherokee\",\n            \"attachmentUrl\": \"https://serverless-cars-adverts-dev.s3.amazonaws.com/bf28d551-5ec3-4aca-a11b-a599e5ceb2f3\",\n            \"createdAt\": \"2021-09-03T20:21:36.149Z\",\n            \"make\": \"Jeep\",\n            \"contactInfo\": \"please call on 123343123, except on Fridays\",\n            \"userId\": \"auth0|61282f35b5b076006af41356\",\n            \"year\": 2018,\n            \"price\": 320000,\n            \"description\": \"Excellent condition. All original equipment used for weekly travels.\",\n            \"Advert\": \"CarAdvert\",\n            \"advertisementId\": \"b922953a-9853-49a6-be64-b9d01b99631e\",\n            \"mileage\": 35000\n        }\n    ]\n}"
+						},
+						{
+							"name": "user 2 can see his created ads only",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/useradverts",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"useradverts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "864"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Sep 2021 20:34:44 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "4182670e-ed32-4674-a70a-585e961bd0bd"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "FGoDrHZgoAMFgwg="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-613286e4-5744f56d33d67f1e16629082"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 338cc9ab91d22cdfee3da5b2b53c3110.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "SepOUjT-qk8ODSABRrUiHA7EwO2VbooYjPnnPcuz2XYpK7vH9caqEQ=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"model\": \"impreza\",\n            \"attachmentUrl\": \"https://serverless-cars-adverts-dev.s3.amazonaws.com/cec947d3-7a10-4b5b-9302-83eb87872776\",\n            \"createdAt\": \"2021-09-03T20:19:10.084Z\",\n            \"make\": \"subaru\",\n            \"contactInfo\": \"+201144862101\",\n            \"userId\": \"google-oauth2|108745815029002158923\",\n            \"year\": 2007,\n            \"price\": 50000,\n            \"description\": \"fair condition only minor scratches and dents...\",\n            \"Advert\": \"CarAdvert\",\n            \"advertisementId\": \"b2d41227-17b2-41d7-8a63-f42f9e9c534e\",\n            \"mileage\": 90000\n        },\n        {\n            \"model\": \"3\",\n            \"attachmentUrl\": \"https://serverless-cars-adverts-dev.s3.amazonaws.com/7e7db3b8-e09b-4482-b412-a608b07457b5\",\n            \"createdAt\": \"2021-09-03T20:19:46.399Z\",\n            \"make\": \"Mazda\",\n            \"contactInfo\": \"+201144862101\",\n            \"userId\": \"google-oauth2|108745815029002158923\",\n            \"year\": 2017,\n            \"price\": 120000,\n            \"description\": \"mint condition...\",\n            \"Advert\": \"CarAdvert\",\n            \"advertisementId\": \"66bf0940-af8c-4f8f-b2bf-bef261ecdb3a\",\n            \"mileage\": 20000\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create advert.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"make\": \"Ford\",\n\t\"model\": \"Focus\",\n    \"year\": 2021,\n    \"mileage\":5000,\n    \"description\":\"Mint condition. All original equipment.\",\n    \"contactInfo\":\"please call on 4512673123, or email me at abc@domain.com\",\n    \"price\":370000\n}"
+						},
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/adverts",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"adverts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create advert.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"make\": \"Ford\",\n\t\"model\": \"Focus\",\n    \"year\": 2021,\n    \"mileage\":5000,\n    \"description\":\"Mint condition. All original equipment.\",\n    \"contactInfo\":\"please call on 4512673123, or email me at abc@domain.com\",\n    \"price\":370000\n}"
+								},
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/adverts",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"adverts"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "373"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Sep 2021 20:36:29 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "43d23635-4bc0-4d2f-b911-2b14b1fbb732"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "FGoT3FF4IAMFXvQ="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-6132874b-5ff162271c78a3de067dbbb4"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 338cc9ab91d22cdfee3da5b2b53c3110.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "mpyUF6pDFma6eChd1qSzLV8wmntU8iXWqa8TDRBBqB0Ri-Ofhe4ZxQ=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"advertisementId\": \"de73c72d-0b2e-4cff-906f-abe0e3482616\",\n        \"userId\": \"google-oauth2|108745815029002158923\",\n        \"description\": \"Mint condition. All original equipment.\",\n        \"make\": \"Ford\",\n        \"model\": \"Focus\",\n        \"mileage\": 5000,\n        \"year\": 2021,\n        \"price\": 370000,\n        \"createdAt\": \"2021-09-03T20:36:29.272Z\",\n        \"contactInfo\": \"please call on 4512673123, or email me at abc@domain.com\",\n        \"attachmentUrl\": \"\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update advert.",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"make\": \"Jeep\",\n    \"model\": \"Cherokee\",\n    \"contactInfo\": \"please call on 123343123, except on Fridays\",\n    \"year\": 2018,\n    \"price\": 320000,\n    \"description\": \"Excellent condition. All original equipment used for weekly travels.\", \n    \"mileage\": 35000\n}"
+						},
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/adverts/b922953a-9853-49a6-be64-b9d01b99631e",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"adverts",
+								"b922953a-9853-49a6-be64-b9d01b99631e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update advert.",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"make\": \"Jeep\",\n    \"model\": \"Cherokee\",\n    \"contactInfo\": \"please call on 123343123, except on Fridays\",\n    \"year\": 2018,\n    \"price\": 320000,\n    \"description\": \"Excellent condition. All original equipment used for weekly travels.\", \n    \"mileage\": 35000\n}"
+								},
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/adverts/b922953a-9853-49a6-be64-b9d01b99631e",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"adverts",
+										"b922953a-9853-49a6-be64-b9d01b99631e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "231"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Sep 2021 20:23:23 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "36cf0c6e-a054-497f-9815-432d820e092d"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "FGmZIH-yoAMF1Og="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-6132843a-6bc279307f83fc9310341343"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 338cc9ab91d22cdfee3da5b2b53c3110.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "tLXnKtGyflihNCKvvXj7UuviBSt1AHAabB3AHoNozoIeH8hCpetKuw=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"model\": \"Cherokee\",\n        \"contactInfo\": \"please call on 123343123, except on Fridays\",\n        \"year\": 2018,\n        \"description\": \"Excellent condition. All original equipment used for weekly travels.\",\n        \"price\": 320000,\n        \"make\": \"Jeep\",\n        \"mileage\": 35000\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete advert.",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/adverts/6c64373f-966d-4007-9fb5-c96a7d8cd76e",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"adverts",
+								"6c64373f-966d-4007-9fb5-c96a7d8cd76e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete advert.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/adverts/6c64373f-966d-4007-9fb5-c96a7d8cd76e",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"adverts",
+										"6c64373f-966d-4007-9fb5-c96a7d8cd76e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Sep 2021 20:24:14 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "2ad8874e-a0d2-4ea2-a9dd-b7a136a079f3"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "FGmhCHmSoAMFghA="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-6132846c-28358b2d567256c10f90ead8"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 338cc9ab91d22cdfee3da5b2b53c3110.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "iSAy_8bBUoNBqqunM1t1oLWlItpjkjU3xsbj1Yj6_c5IKVefgdd_Og=="
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get attachment URL for advert image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/adverts/b922953a-9853-49a6-be64-b9d01b99631e/attachment",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"adverts",
+								"b922953a-9853-49a6-be64-b9d01b99631e",
+								"attachment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get attachment URL for advert image",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/adverts/b922953a-9853-49a6-be64-b9d01b99631e/attachment",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"adverts",
+										"b922953a-9853-49a6-be64-b9d01b99631e",
+										"attachment"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1231"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Sep 2021 20:28:43 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "261af781-06fa-4542-9ebf-62d38b937f8a"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "FGnLTFkoIAMFzDw="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-6132857b-596e749d495a722753b90660"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 338cc9ab91d22cdfee3da5b2b53c3110.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "qqhDgxImxw39ycMdmD4-Fon5Kixrz71rlUXWsHqJSYOF07RUNuk6Kg=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"uploadUrl\": \"https://serverless-cars-adverts-dev.s3.amazonaws.com/18cb055c-779e-4648-8dc3-cc26a266835a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIARQPFGU2H6J72FOX2%2F20210903%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210903T202843Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEO3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQCFSCmWV9oXyWgOuYf8HxxBuyiywEQU%2FGRbGrU5xDir%2BAIhANG1nnVfX8gS1bU7tS%2FhdXpYStKMjP9BcpCTkyCYk1X9KrMCCDYQARoMMTA0MDk2NzY5Njc5IgyiZCNeeJHsUU%2BzB%2BMqkAJhS2jcdZCtg3UoMWiRwNodmr9MDa3iY97qtbxsHMDQl5Z86e%2BXeKhoA%2Bi0OQrM1dlx4UVAs%2BmH%2FsqE017uUXaAgDvGS88RKSoVWos3BPgXISCz2u7INOv%2FKCwpBnOuRGV0B%2Fy0sgBR1TR9B%2FQwebbOMj2im6PZfM9XiQH3Giuff1YKGoc0ha2nNokF%2FfY6Wu4HuWLCGIATdkZbkqZ2MwatP8Da1BpDlOglX8ax06fs0RfsH44tM2YfY7UFfPHNIk8iIGEzUbZ%2FzFnFqh2V2ISWkN%2BmRCnT74RsAcnoh70UpjOFU3e6AoF7SqGXMZQ0u%2BeZEinDoAP0SVxrJNkjqEFwxOp4cjZuTNFus2bMGPgNjDCWicqJBjqZATZ26699O3eEJ77jR7jT6XesWCtjkPiuLZJbEkLaQoSg1qC%2FOYLOZ%2F8qUypk5ExyptXDPcxvalSGrCZMNf4YnNK1dzs33rZaptUKs87MoREwKyOIcobaRYc5Xe7BZIarsm5PtknNpGoq4FSWBNBed5uBzX6r2d%2BPQ3qjVNLlfmedNmkV9eGaPmpJTQ6O9K9RbTCNbNrNnocdgQ%3D%3D&X-Amz-Signature=d585f348c0ecb6e4ccee3b77fc0f273d707341e1291036ee7a73dcd6ab8d89b2&X-Amz-SignedHeaders=host\"\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

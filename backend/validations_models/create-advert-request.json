@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "advertCreate",
+  "type": "object",
+  "properties": {
+    "make": {
+      "minLength": 1,
+      "maxLength": 20
+    },
+    "model": {
+      "minLength": 1,
+      "maxLength": 20
+    },
+    "year": {
+      "type": "number",
+      "minimum": 1900
+    },
+    "mileage": {
+      "type": "number",
+      "minimum": 0
+    },
+    "price": {
+      "type": "number",
+      "minimum": 0
+    },
+    "contactInfo": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    }
+  },
+  "required": [
+    "make",
+    "model",
+    "year",
+    "mileage",
+    "price",
+    "contactInfo"
+  ],
+  "additionalProperties": false
+}

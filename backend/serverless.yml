@@ -1,0 +1,304 @@
+service:
+  name: serverless-used-cars-app
+
+plugins:
+  - serverless-webpack
+  - serverless-iam-roles-per-function
+  - serverless-reqvalidator-plugin
+  - serverless-aws-documentation
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+
+  tracing:
+    lambda: true
+    apiGateway: true
+    iamRoleStatements:
+      - Effect: 'Allow'
+        Action:
+          - 'xray:PutTraceSegments'
+          - 'xray:PutTelemetryRecords'
+        Resource:
+          - '*'
+
+
+  environment:
+    ADVERTS_TABLE: CAR-ADVERTS-${self:provider.stage}
+    ADVERT_ID_INDEX: advertIdIndex
+    IMAGES_S3_BUCKET: serverless-cars-adverts-${self:provider.stage}
+    SIGNED_URL_EXPIRATION: 300
+  
+custom:
+  documentation:
+      api:
+        info:
+          version: v1.0.0
+          title: UsedCars API
+          description: Serverless application for adding used cars advertisements
+      models:
+        - name: CreateAdvertRequest
+          contentType: application/json
+          schema: ${file(validations_models/create-advert-request.json)}
+        - name: UpdateAdvertRequest
+          contentType: application/json
+          schema: ${file(validations_models/update-advert-request.json)}
+
+
+
+################################## Functions ###############################  
+
+functions:
+
+  Auth:
+    handler: src/lambda/auth/auth0Authorizer.handler
+
+# done
+  GetAdverts:
+    handler: src/lambda/http/getAdverts.handler
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ADVERTS_TABLE}
+      # - Effect: Allow
+      #   Action:
+      #     - dynamodb:Query
+      #   Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ADVERTS_TABLE}/index/${self:provider.environment.ADVERT_ID_INDEX}
+      # - Effect: Allow
+      #   Action:
+      #     - s3:GetObject
+      #   Resource: arn:aws:s3:::${self:provider.environment.IMAGES_S3_BUCKET}/*
+      - Effect: Allow
+        Action:
+          - 'xray:PutTraceSegments'
+          - 'xray:PutTelemetryRecords'
+        Resource:
+          - "*"
+    events:
+      - http:
+          method: get
+          path: adverts
+          cors: true
+          authorizer: Auth
+          reqValidatorName: RequestBodyValidator
+
+# done
+  GetUserCreatedAdverts:
+    handler: src/lambda/http/getUserCreatedAdverts.handler
+    iamRoleStatements:
+      # - Effect: Allow
+      #   Action:
+      #     - dynamodb:Query
+      #   Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ADVERTS_TABLE}
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ADVERTS_TABLE}/index/${self:provider.environment.ADVERT_ID_INDEX}
+      - Effect: Allow
+        Action:
+          - 'xray:PutTraceSegments'
+          - 'xray:PutTelemetryRecords'
+        Resource:
+          - "*"
+    events:
+      - http:
+          method: get
+          path: useradverts
+          cors: true
+          authorizer: Auth
+          reqValidatorName: RequestBodyValidator
+
+# done
+  CreateAdvert:
+    handler: src/lambda/http/createAdvert.handler
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ADVERTS_TABLE}
+      - Effect: Allow
+        Action:
+          - 'xray:PutTraceSegments'
+          - 'xray:PutTelemetryRecords'
+        Resource:
+          - "*"
+    events:
+      - http:
+          method: post
+          path: adverts
+          cors: true
+          authorizer: Auth
+          reqValidatorName: RequestBodyValidator
+          documentation:
+            summary: Create a new advertisment
+            description: Create a new advertisment item
+            requestModels:
+              'application/json': CreateAdvertRequest
+    
+# done
+  UpdateAdvert:
+    handler: src/lambda/http/updateAdvert.handler
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:UpdateItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ADVERTS_TABLE}
+      # - Effect: Allow
+      #   Action:
+      #     - dynamodb:GetItem
+      #   Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ADVERTS_TABLE}
+      - Effect: Allow
+        Action:
+          - 'xray:PutTraceSegments'
+          - 'xray:PutTelemetryRecords'
+        Resource:
+          - "*"
+    events:
+      - http:
+          method: patch
+          path: adverts/{advertId}
+          cors: true
+          authorizer: Auth
+          reqValidatorName: RequestBodyValidator
+          request:
+            parameters:
+              paths:
+                advertId: true
+          documentation:
+            summary: Update an advert
+            description: Update an advert item
+            requestModels:
+              'application/json': UpdateAdvertRequest
+
+# done
+  DeleteAdvert:
+    handler: src/lambda/http/deleteAdvert.handler
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:DeleteItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ADVERTS_TABLE}
+      - Effect: Allow
+        Action:
+          - 'xray:PutTraceSegments'
+          - 'xray:PutTelemetryRecords'
+        Resource:
+          - "*"
+    events:
+      - http:
+          method: delete
+          path: adverts/{advertId}
+          cors: true
+          authorizer: Auth
+          reqValidatorName: RequestBodyValidator
+          request:
+            parameters:
+              paths:
+                advertId: true
+
+# done
+  GenerateUploadUrl:
+    handler: src/lambda/http/generateUploadUrl.handler
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - s3:PutObject
+        Resource: arn:aws:s3:::${self:provider.environment.IMAGES_S3_BUCKET}/*
+      - Effect: Allow
+        Action:
+          - dynamodb:UpdateItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ADVERTS_TABLE}
+      - Effect: Allow
+        Action:
+          - 'xray:PutTraceSegments'
+          - 'xray:PutTelemetryRecords'
+        Resource:
+          - "*"
+    events:
+      - http:
+          method: post
+          path: adverts/{advertId}/attachment
+          cors: true
+          authorizer: Auth
+
+
+
+
+################################## Resources ###############################  
+resources:
+  Resources:
+    AdvertsDynamoDBTable:
+        Type: AWS::DynamoDB::Table
+        Properties:
+          AttributeDefinitions:
+            - AttributeName: Advert
+              AttributeType: S
+            - AttributeName: advertisementId
+              AttributeType: S
+            - AttributeName: userId
+              AttributeType: S
+            - AttributeName: createdAt
+              AttributeType: S
+          KeySchema:
+            - AttributeName: Advert
+              KeyType: HASH
+            - AttributeName: advertisementId
+              KeyType: RANGE
+          BillingMode: PAY_PER_REQUEST
+          TableName: ${self:provider.environment.ADVERTS_TABLE}
+
+          GlobalSecondaryIndexes:
+            - IndexName: ${self:provider.environment.ADVERT_ID_INDEX}
+              KeySchema:
+              - AttributeName: userId
+                KeyType: HASH
+              - AttributeName: createdAt
+                KeyType: RANGE
+              Projection:
+                ProjectionType: ALL
+   
+    RequestBodyValidator:
+      Type: AWS::ApiGateway::RequestValidator
+      Properties:
+        Name: 'request-body-validator'
+        RestApiId:
+          Ref: ApiGatewayRestApi
+        ValidateRequestBody: true
+        ValidateRequestParameters: true
+        
+    AttachmentsBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.environment.IMAGES_S3_BUCKET}
+        CorsConfiguration:
+          CorsRules:
+            -
+              AllowedOrigins:
+                - '*'
+              AllowedHeaders:
+                - '*'
+              AllowedMethods:
+                - GET
+                - PUT
+                - POST
+                - DELETE
+                - HEAD
+              MaxAge: 3000
+
+    BucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        PolicyDocument:
+          Id: MyPolicy
+          Version: "2012-10-17"
+          Statement:
+            - Sid: PublicReadForGetBucketObjects
+              Effect: Allow
+              Principal: '*'
+              Action: 's3:GetObject'
+              Resource: 'arn:aws:s3:::${self:provider.environment.IMAGES_S3_BUCKET}/*'
+        Bucket: !Ref AttachmentsBucket
